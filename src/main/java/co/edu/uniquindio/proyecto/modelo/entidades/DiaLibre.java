@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo;
+package co.edu.uniquindio.proyecto.modelo.entidades;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -12,9 +12,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Medico extends Usuario{
+public class DiaLibre {
 
     @Id
     private String codigo;
+
+    private String dia;
 
 }

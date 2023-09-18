@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo;
+package co.edu.uniquindio.proyecto.modelo.entidades;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -8,17 +8,21 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
-public class Cuenta implements Serializable {
+public class Usuario extends Cuenta implements Serializable {
+
     @Id
-    @EqualsAndHashCode.Include
     private String codigo;
 
-    private String correo;
-    private String contraseña;
+    private String cedula;
+    private String nombre;
+    private String telefono;
+    private String urlFoto;
+
 }

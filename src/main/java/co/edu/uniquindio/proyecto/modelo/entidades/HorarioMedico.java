@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo;
+package co.edu.uniquindio.proyecto.modelo.entidades;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,13 +11,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Mensaje {
+public class HorarioMedico {
 
     @Id
     private String codigo;
-
-    private String fechaCreacion;
-    private String mensaje;
+    private String dia;
+    private String horaInicio;
+    private String horaFin;
 
 }

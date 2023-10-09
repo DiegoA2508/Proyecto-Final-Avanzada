@@ -1,23 +1,51 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import co.edu.uniquindio.proyecto.modelo.enums.Estado;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.management.ConstructorParameters;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cita {
 
     @Id
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @Column(unique = true,nullable = false,updatable = false)
+    private int codigo;
 
-    private String fechaCreacion;
-    private String fechaCita;
+    @Column(nullable = false)
+    @DateTimeFormat
+    private LocalDateTime fechaCreacion;
+
+    @Column(nullable = false)
+    @DateTimeFormat
+    private LocalDateTime fechaCita;
+
+    @Column(updatable = false)
     private String motivo;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Paciente codigoPaciente;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Medico codigoMedico;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Estado estadoCita;
+
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Atencion atencionCita;
 }

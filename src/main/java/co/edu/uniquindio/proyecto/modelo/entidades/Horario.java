@@ -5,16 +5,15 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class DiaLibre implements Serializable {
+public class Horario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +21,19 @@ public class DiaLibre implements Serializable {
     @Column(unique = true,nullable = false,updatable = false)
     private String codigo;
 
-    @Column(nullable = false)
+    @Column(nullable = false,updatable = false,length = 20)
     private String dia;
 
+    @Column(nullable = false)
+    @DateTimeFormat
+    private LocalDateTime horaInicio;
+
+    @Column(nullable = false)
+    @DateTimeFormat
+    private LocalDateTime horaFin;
+
     @ManyToOne
-    @JoinColumn(unique = true,updatable = false,nullable = false)
+    @JoinColumn(nullable = false)
     private Medico codigoMedico;
+
 }

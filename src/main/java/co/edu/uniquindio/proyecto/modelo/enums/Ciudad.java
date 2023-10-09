@@ -1,12 +1,13 @@
 package co.edu.uniquindio.proyecto.modelo.enums;
 
-import jakarta.persistence.Id;
-
 public enum Ciudad {
 
-    @Id
-    codigo,
+    ARMENIA( "Armenia"),
+    PEREIRA("Pereira"),
+    CALARCA("Calarca"),
+    SANTA_ROSA("Santa Rosa de Cabal");
 
-    NOMBRE
+    private String nombre;
 
+    Ciudad(String nombre){ this.nombre = nombre;}
 }

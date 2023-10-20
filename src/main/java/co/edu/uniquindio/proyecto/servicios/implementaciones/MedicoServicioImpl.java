@@ -12,20 +12,24 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MedicoServicioImpl implements MedicoServicio {
 
     private final CitaRepo citaRepo;
-    private Cita cita;
+
 
     @Override
     public List<ItemCitaAdminDTO> listarCitasPendientes(int codigoMedico) throws Exception {
 
         List<Cita> citas = citaRepo.findAll();
         List<ItemCitaAdminDTO> respuesta = new ArrayList<>();
+
+        Cita cita = new Cita();
 
         if(cita.getCodigoMedico().getCodigo()==codigoMedico) {
             if (cita.getEstadoCita().equals(EstadoCita.PENDIENTE)) {
@@ -49,7 +53,17 @@ public class MedicoServicioImpl implements MedicoServicio {
 
     @Override
     public int atenderCita(RegistroAtencionDTO registroAtencioDTO) throws Exception {
+
+        Optional<Cita> optional = citaRepo.findById(Integer.valueOf(registroAtencioDTO.codigoCita()));
+
+        if( optional.isEmpty() ){
+            throw new Exception("No existe un médico con el código "+registroAtencioDTO.codigoCita());
+        }
+
+        Cita cita = optional.get();
+
         return 0;
+
     }
 
     @Override

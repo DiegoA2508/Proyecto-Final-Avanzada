@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,8 +60,8 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         for (HorarioDTO h: horarios) {
             Horario hm = new Horario();
             hm.setDia(h.dia());
-            hm.setHoraInicio(LocalDateTime.from(h.horaInicio()));
-            hm.setHoraFin(LocalDateTime.from(h.horaFin()));
+            hm.setHoraInicio(LocalTime.from(h.horaInicio()));
+            hm.setHoraFin(LocalTime.from(h.horaFin()));
             hm.setCodigoMedico(medicoNuevo);
 
             horarioRepo.save(hm);

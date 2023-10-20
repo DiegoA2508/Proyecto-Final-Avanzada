@@ -4,8 +4,8 @@ public enum Estado {
 
     ACTIVO("Activo"),
     INACTIVO("Inactivo");
-    private String nombre;
+    private String estado;
 
-    Estado(String nombre){ this.nombre = nombre;}
+    Estado(String nombre){ this.estado = estado;}
 
 }

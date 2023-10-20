@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -19,18 +20,18 @@ public class Horario{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Column(unique = true,nullable = false,updatable = false)
-    private String codigo;
+    private int codigo;
 
     @Column(nullable = false,updatable = false,length = 20)
     private String dia;
 
     @Column(nullable = false)
     @DateTimeFormat
-    private LocalDateTime horaInicio;
+    private LocalTime horaInicio;
 
     @Column(nullable = false)
     @DateTimeFormat
-    private LocalDateTime horaFin;
+    private LocalTime horaFin;
 
     @ManyToOne
     @JoinColumn(nullable = false)

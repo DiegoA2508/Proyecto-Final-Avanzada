@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto;
 
+import co.edu.uniquindio.proyecto.dto.MedicoDTO;
 import co.edu.uniquindio.proyecto.dto.admin.HorarioDTO;
 import co.edu.uniquindio.proyecto.dto.admin.RegistroMedicoDTO;
 import co.edu.uniquindio.proyecto.modelo.enums.Ciudad;
@@ -46,6 +47,13 @@ public class AdministradorTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Test
+    public void actualizarMedicoTest(){
+
+        List<MedicoDTO> medicos = new ArrayList<>();
 
     }
 

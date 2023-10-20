@@ -19,7 +19,7 @@ public class Atencion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Column(unique = true,nullable = false,updatable = false)
-    private String codigo;
+    private int codigo;
 
     @Column(nullable = false,updatable = false)
     private String diagnostico;

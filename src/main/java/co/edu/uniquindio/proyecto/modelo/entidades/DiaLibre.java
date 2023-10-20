@@ -20,7 +20,7 @@ public class DiaLibre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Column(unique = true,nullable = false,updatable = false)
-    private String codigo;
+    private int codigo;
 
     @Column(nullable = false)
     private String dia;
